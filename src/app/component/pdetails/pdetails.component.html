@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="row justify-content-evenly">
+        <div class="col-md-5">
+            <div id="product-slider" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{{item.path+item.ProductId+'.'+item.ext}}" class="d-block">
+                  </div>                  
+                   
+                </div>
+              </div>
+        </div>
+        <div class="col-md-6 ">
+            <div class="title-box bg-primary" style="margin: 30px 30px;">
+                <p class="new-arrival" style="font-size: 12px;padding-left:5px;padding-top: 2px;font-weight: 800;">NEW</p>
+            </div>
+            <div style="margin: 30px 30px;">
+                <h2>{{item.title}}</h2>
+                <p>Product Code: IRS{{item.ProductId}}</p>
+                <p style="margin-top: -10px;"> 
+                  <span *ngFor="let number of counter(item.rating)">  
+                  <i  *ngIf="number == 1" class="fa fas fa-star"></i>
+                  <i  *ngIf="number == 0" class="far fa-star" style="color: orange;"></i>
+                  <i  *ngIf="number == 0.5" class="fa fas fa-star-half-alt"></i>
+                  </span>
+                </p>
+                <p><strong><i style="color: black;font-size:13px" class="fa fa-inr" aria-hidden="true"></i>{{getAmountFormat(item.price)}}</strong>
+                  <span style="font-size:15px; margin-left: 10px;margin-right:10px;color: #878787;"> <del><i style="color: #878787;font-size:13px" class="fa fa-inr" aria-hidden="true"></i>{{getAmountFormat(item.Oprice)}}</del></span><span style="color: rgb(80, 177, 122);font-size: small;"> <strong>{{item.discount}}% off</strong></span> </p>
+                <p><b>Availability :</b> {{item.availiability}} </p>
+                <p><b>Condition :</b> {{item.condition}} </p>
+                <p><b>Brand :</b> {{item.Brand}} </p>
+                <label>Quantity : </label>
+                <input style="margin:0 10px;width:30px;padding-left: 1ch;padding-right: 1ch;" type="text" value="1"/>
+               <br><br>
+                <button (click)="addToCart(item)" type="button" class="btn btn-primary">Add to cart</button>
+              </div>
+        </div>
+
+    </div>
+
+    <div class="row" >
+      <div class="col" style="margin: 30px 30px;">
+        <h3>Product Description </h3>
+        <p>{{item.description}}</p>
+      <p>
+        {{item.description}}
+      </p>
+      <hr>
+      </div>
+    </div>
+
+
+
+    <div class="title1-box bg-primary" style="margin-top: -20px; margin-left: 30px;">
+      <p class="new-arrival" style="font-size: 12px;padding-left:5px;padding-top: 2px;font-weight: 800;" >SIMILAR</p>
+  </div>
+  <div class="row justify-content-evenly" style="margin-top: 20px;">
+    <div *ngFor = "let items of brandList" class="col-md-3 mb-3 text-center">
+
+     
+        <img style="box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.5);padding:20px;width: 260px;height:250px;border-radius: 3px;" src="{{items.path+items.ProductId+'.'+items.ext}}" alt="" routerLink="/pdetails" (click)="goToComponent(items)">
+        <h4 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;margin-top: 10px;">{{items.title}}</h4>
+        <p style="margin-top: -5px;"> 
+          <span *ngFor="let number of counter(items.rating)">  
+          <i  *ngIf="number == 1" class="fa fas fa-star"></i>
+          <i  *ngIf="number == 0" class="far fa-star" style="color: orange;"></i>
+          <i  *ngIf="number == 0.5" class="fa fas fa-star-half-alt"></i>
+          </span>
+        </p>
+        <p><strong><i style="color: black;font-size:13px" class="fa fa-inr" aria-hidden="true"></i>{{getAmountFormat(items.price)}}</strong>
+          <span style="font-size:15px; margin-left: 10px;margin-right:10px;color: #878787;"> <del><i style="color: #878787;font-size:13px" class="fa fa-inr" aria-hidden="true"></i>{{getAmountFormat(items.Oprice)}}</del></span><span style="color: rgb(80, 177, 122);font-size: small;"> <strong>{{items.discount}}% off</strong></span> </p>
+        <button (click)="addToCart(items)"  class="btn btn-primary">Add to cart</button>
+   
+    </div>
+
+     
+
+</div>
+  </div>
+
+ 
+
+
+
+   
+
+
+

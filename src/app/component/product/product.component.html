@@ -1,0 +1,58 @@
+<div class="cart-top container-fluid" style="margin-top: 70px;border: none;">
+    <div class="container d-flex">
+        <div class="item">
+           <a>
+               <img src="/assets/images/home.png" alt="">
+               <h6>Home</h6>
+          </a>
+        </div>
+        <div class="item">
+            <a>
+                <img src="/assets/images/electronics.png" alt="">
+                <h6>Electronics</h6>
+           </a>
+        </div>
+        <div class="item">
+            <a>
+                <img src="/assets/images/toys.png" alt="">
+                <h6>Toys</h6>
+           </a>
+        </div>
+        <div class="item">
+            <a>
+                <img src="/assets/images/fashion.png" alt="">
+                <h6>Fashion</h6>
+           </a>
+        </div>
+       
+    </div>
+    <hr>
+</div>
+
+
+<div class="container">
+    <div class="row justify-content-evenly">
+        <ng-container *ngFor="let item of productList">
+        <div class="card col-md-3">
+            <img  src="{{item.path+item.ProductId+'.'+item.ext}}" routerLink="/pdetails" (click)="goToComponent(item)" alt="">
+            <h3 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.title}}</h3>
+            <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p>
+            <p style="font-size:15px;margin-left: 5px;"><strong><i style="color: black;font-size:13px" class="fa fa-inr" aria-hidden="true"></i>{{getAmountFormat(item.price)}}</strong>
+                <span style="font-size:15px; margin-left: 8px;margin-right:8px;color: #878787;"> <del> <i style="color: #878787;font-size:13px" class="fa fa-inr" aria-hidden="true"></i></del><del>{{getAmountFormat(item.Oprice)}}</del></span><span style="color: rgb(80, 177, 122);font-size: small;"> <strong>{{item.discount}}% off</strong></span> </p>
+          <p> 
+              <span *ngFor="let number of counter(item.rating)">  
+              <i  *ngIf="number == 1" class="fa fas fa-star"></i>
+              <i  *ngIf="number == 0" class="far fa-star" style="color: orange;"></i>
+              <i  *ngIf="number == 0.5" class="fa fas fa-star-half-alt"></i>
+              </span>
+            </p>
+           <!-- <i class="fa fa-star"></i>
+              <i class='fa fa-star-half-empty'></i>-->
+         
+                <button (click)="addToCart(item)" class="btn btn-primary">Add to cart</button>
+        </div>
+    </ng-container>
+    </div>
+</div>
+
+

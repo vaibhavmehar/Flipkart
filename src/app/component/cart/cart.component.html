@@ -1,0 +1,137 @@
+<ng-container *ngIf="product.length>0">
+    <div class="row justify-container-evenly">
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col">
+                    <div class="col border"
+                        style="background-color: rgb(230, 230, 202);margin-top: 100px; border-radius: 5px;margin-left: 20px;margin-right: 20px;">
+                        <h4 style="padding-left: 10px">My Cart({{product.length}})</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="row" style="margin-left: 1px;margin-right: 1px;">
+                        <div class="col"
+                            style="padding-left: 10px;padding-right: 10px; border-radius: 5px;margin-left: 20px;margin-right: 20px;">
+                           <ng-container *ngFor="let item of product;let i = index">
+                            <div class="row mt-1 border">
+
+
+                                <div class="col-md-3 text-center ">
+                                    <img style="height:100px;width:100px;margin: 15px;"
+                                        src="{{item.path+item.ProductId+'.'+item.ext}}" routerLink="/pdetails" (click)="goToComponent(item)"
+                                        alt="">
+                                </div>
+                                <div class="col-md-5">
+                                    <h4 style="padding-top: 15px; font-weight: 400;font-size: 15px;padding-left: 10px">{{item.title}}
+                                    </h4>
+                                    <p style="padding-left: 10px;"> 
+                                        <span *ngFor="let number of counter(item.rating)">  
+                                        <i  *ngIf="number == 1" class="fa fas fa-star"></i>
+                                        <i  *ngIf="number == 0" class="far fa-star" style="color: orange;font-size: 12px;"></i>
+                                        <i  *ngIf="number == 0.5" class="fa fas fa-star-half-alt"></i>
+                                        </span>
+                                      </p>
+                                    <p style="font-size:12px;margin-top: -10px; margin-left: 10px;color: #878787;">Seller : {{item.Brand}}
+                                    </p>
+                                    <p style="margin-left: 10px;"><strong><i style="color: black;font-size:13px" class="fa fa-inr" aria-hidden="true"></i>{{getAmountFormat(item.price)}}</strong>
+                                        <span style="font-size:15px; margin-left: 10px;margin-right:10px;color: #878787;"> <del><i style="color: #878787;font-size:13px" class="fa fa-inr" aria-hidden="true"></i>{{getAmountFormat(item.Oprice)}}</del></span><span style="color: rgb(80, 177, 122);font-size: small;"> <strong>{{item.discount}}% off</strong></span> </p>
+
+                                    <button (click) ="removeItem(item,i)"class="btn btn-link">Remove</button>
+                                </div>
+                                <div class="col-md-3">
+                                    <p style="font-size:12px;padding-top: 12px;font-weight: 600;">Delivered By 11 AM
+                                        Tomorrow<br>
+                                        <span style="font-size:11px;color: seagreen;padding-top: none;">Free
+                                            Delivery</span>
+                                    </p>
+
+                                    <p style="font-size:12px;padding-top: 12px;color: #878787;"> 7 Days replacement
+                                        policy
+                                    </p>
+                                </div>
+                            </div>
+                        </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="row">
+            
+                    <div class="col border price-border" 
+                        style="background-color: rgb(230, 230, 202); border-radius: 5px;">
+                        <h4>Price Details</h4>
+                    </div>
+           
+            </div>
+            <div class="row mt-1">
+                <div class="col border price-border-detail" style="border-radius: 5px;">
+                    <div class="row">
+                        <div class="col">
+                           <p style="margin-top: 10px;"> Price ({{product.length}} Items) <span style="float:right"><i style="color: black;font-size:13px" class="fa fa-inr" aria-hidden="true"></i>{{getAmountFormat(grandTotal)}}</span></p>
+                           <p style="margin-top: 5px;"> Discount <span style="float:right;color: seagreen;">- <i style="color: seagreen;;font-size:13px" class="fa fa-inr" aria-hidden="true"></i>{{getAmountFormat(discountPrice)}}</span></p>
+                           <p style="margin-top: 5px;"> Delivery Charges <span style="float:right;color: seagreen;">FREE</span></p>
+                          
+                        </div>
+                    
+                    </div>
+                    <div class="row" >
+                         <div class="col-md-12">
+                             <hr>
+                         </div>
+                        <div class="col">
+                          
+                        <p style="margin-top: 5px;"><strong>Total Amount  <span style="float:right;"><i style="color: black;font-size:13px" class="fa fa-inr" aria-hidden="true"></i>{{getAmountFormat(offerPrice)}}</span></strong></p>
+                        </div>
+                        <div class="col-md-12">
+                            <hr>
+                        </div>
+                        <div class="col-md-12">
+                            <p style="margin-top: 5px;font-weight: 600 ;font-size:13px;color: seagreen;">You will save <i style="color: seagreen;font-size:11px;" class="fa fa-inr" aria-hidden="true"></i>{{getAmountFormat(discountPrice)}} on this order.
+                        </div>
+                        
+                    </div>
+
+                    
+                </div>
+
+            </div>
+            <div class="row mt-3" >
+                <div class="col-md-12">
+                    <button [disabled] = "loadButton" class="btn btn-primary" (click)="placeOrder()">
+                        <div *ngIf="loadButton" class="spinner-border spinner-border-sm text-light" role="status">
+                            <span class="sr-only">Loading...</span>
+                          </div>  
+                        Place Order</button>
+                    <button style="margin-left: 10px;" class="btn btn-primary" (click)="RemoveAll()">Empty Cart</button>
+                </div>
+               
+            </div>
+        </div>
+        
+    </div>
+</ng-container>
+
+
+
+
+<ng-container *ngIf="product.length==0">
+    <div class="container">
+        <div class="row" style="height:400px;margin-top: 100px; border-radius: 3px;">
+            <div class="col border">
+                <h4 >My Cart</h4>
+                <div class="row justify-container-evenly">
+                    <div class="col-md-12 text-center">
+                        <img src="/assets/images/cart.png" style="width: 250px;height: 200px;" alt="">
+                        <p style="margin-top: 20px; font-weight: 600;">Missing Cart items ?</p>
+                        <p>Add items to it now</p>
+                        <button routerLink="/product" class="btn btn-primary">Shop now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

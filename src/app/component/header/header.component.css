@@ -1,0 +1,150 @@
+.icon-style {
+    font-size: 30px;
+    margin-left: 10%;
+}
+
+.header-style {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+
+.navbar-nav input{
+    width:450px;
+    margin-left:10px;
+    border-radius: 3px;
+    border-style: none;
+    box-shadow: none;
+    outline: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 1ch;
+    padding-right: 5ch;
+
+}
+
+.navbar-toggler {
+    box-shadow: none;
+    border-style: none;
+    border : none;
+}
+
+.icon-style-cart{
+    font-size: 30px;
+    margin-left: 10%;
+    position: relative;
+    margin-left:650px;
+}
+
+.cart-sm{
+
+    margin-right: 80px;
+ }
+
+ .btn-navbar{
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-style: none;
+  
+}
+
+.btn-navbar:focus{
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-style: none;
+    background: none;
+}
+
+.btn-navbar:hover{
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-style: none;
+    background: none;
+}
+
+.login-open{
+       text-decoration: none;
+
+}
+
+.login{
+    display: none;
+}
+
+@media only screen and (max-width: 500px) {
+
+    .cart-sm{
+       
+        display: none;
+     }
+
+         .login{
+         display:inline-block;
+         text-decoration: none;
+       
+     }
+     
+     .header-style {
+        font-size: 15px;
+        font-weight: 500;
+        margin-top: -3px;
+      
+    }
+
+    .navbar-nav input{
+        width:330px;
+        margin-left:10px;
+        border-radius: 3px;
+        border-style: none;
+        box-shadow: none;
+        outline: none;
+        padding-left: 1ch;
+        padding-right: 5ch;
+    
+    }
+
+     .badge-icon{
+        font-size: 10px;
+        position: relative;
+        z-index: 10px;
+        margin-right: -18px;
+    }
+
+    .btn-navbar{
+        border: none;
+        outline: none;
+        box-shadow: none;
+        border-style: none;
+      
+    }
+
+    .btn-navbar:focus{
+        border: none;
+        outline: none;
+        box-shadow: none;
+        border-style: none;
+        background: none;
+    }
+
+    .btn-navbar:hover{
+        border: none;
+        outline: none;
+        box-shadow: none;
+        border-style: none;
+        background: none;
+    }
+
+
+  
+}
+
+
+ 
+
+
+
+

@@ -1,0 +1,193 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand text-light header-style" routerLink="product"><i class="fas fa-shipping-fast icon-style"></i>
+        Flipkart 
+         </a>  
+         <!-- <span *ngIf="username!='' && username!=undefined " class="text-light username-position" style="font-size: 16px; margin: 10px;margin-top: 20px;">Welcome , {{username}}</span> -->
+
+        <div class="navbar-toggler navbar-toggler-right navbar-dark" style="margin-right: -15px;">
+        <!-- <button routerLink="cart" type="button" class="btn btn-primary btn-navbar" >
+           
+        <i class="fas fa-cart-plus text-light" style="font-size: 30px;margin-right: 10px; ">
+            <span *ngIf="totalItem!=0" class="badge rounded-pill bg-danger" style="position: absolute;font-size: 10px; margin-left:-5px; margin-top: 15px;">{{totalItem}}</span></i> 
+           
+        </button> -->
+        <div style="margin-top:6px;margin-left: -180px;position: absolute;" *ngIf="username!='' && username!=undefined " class="dropdown text-light d-flex">
+            <a style="font-size: 15px" class="btn btn-primary dropdown-toggle btn-navbar" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+               {{username}}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">My Order1</a></li>
+              <li><a (click)="logout()" class="dropdown-item" >Logout</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+            <button style="margin-left: -5px;" routerLink="cart" class="btn btn-primary btn-navbar" type="button" >
+                <i class="fas fa-cart-plus text-light" style="font-size: 20px; ">
+                    <span *ngIf="totalItem!=0" class="badge rounded-pill bg-danger" style="position: absolute;font-size: 10px; margin-left:-5px; margin-top: 13px;">{{totalItem}}</span></i>
+                </button>
+          </div>
+
+        <button (click)="ResetCredentials()" *ngIf="!getUsername()" class="btn btn-link text-light login" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</button>
+        <button type="button" class=" navbar-toggler navbar-toggler-right navbar-dark btn btn-primary btn-navbar"  data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon " ></span>
+        </button>
+    </div>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <!-- <a href="#" class="nav-item nav-link active">Home</a>
+                <a href="#" class="nav-item nav-link">Profile</a>
+                <a href="#" class="nav-item nav-link">Messages</a>
+                <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a> -->
+
+                <input type="text" placeholder="search product" >
+             
+                
+            </div>
+           
+            <!-- <button (click)="logout()"  *ngIf="getUsername()" class="btn btn-link text-light login">Logout</button> -->
+    
+        </div>
+        
+        <div class="cart-sm">
+           <button (click)="ResetCredentials()" *ngIf="!getUsername()" class="btn btn-link text-light login-open" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</button>    
+           <!-- <button  *ngIf="getUsername()" (click)="logout()"  class="btn btn-link text-light login-open">Logout</button> -->
+           <div style="font-size: 16px;margin-top: 10px;" *ngIf="username!='' && username!=undefined " class="dropdown text-light username-position">
+            <a class="btn btn-primary dropdown-toggle btn-navbar" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+               {{username}}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">My Order</a></li>
+              <li><a (click)="logout()" class="dropdown-item" >Logout</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          
+       
+           <button routerLink="cart" class="btn btn-primary btn-navbar" type="button" >
+        <i class="fas fa-cart-plus text-light" style="font-size: 30px;margin-right: 10px; ">
+            <span *ngIf="totalItem!=0" class="badge rounded-pill bg-danger" style="position: absolute;font-size: 10px; margin-left:-5px; margin-top: 13px;">{{totalItem}}</span></i>
+        </button>
+    </div>
+        </div>
+        </div>
+</nav>
+
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" style="transform: translate(-2%, 0%);"   id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" >
+        <button  style="margin-left:118%;transform: translate(5%, 100%);font-size: 25px;font-weight: 500;" type="button" class="btn text-light" data-bs-dismiss="modal" aria-label="Close">X</button>
+      <div class="modal-content centered" style="width:600px">
+      
+            
+        
+          
+              <div class="row">
+                  <div class="col-md-12 " style="height:500px; border-radius: 5px;">
+                    <table>
+                      
+                            <td class="bg-primary"style="width:220px">
+                               <h1 style="color: white;margin-top:50px; margin-left:  30px; ">Login</h1>
+                               <p style="color: whitesmoke;margin-top:30px; margin-left:  30px;font-size: 16px;">Get access to your Orders, Wishlist and Recommendations</p>
+                           <img  style="margin:20px;margin-top:100px; width: 200px;height: 150px;" src="/assets/images/login.png" alt="">
+
+                            </td>
+                            <td style="height:500px">
+                               <form (ngSubmit)="onSubmit()" style="margin-left: 30px;">
+                              <mat-form-field style="width:300px">
+                                  <mat-label>Enter Email/Mobile number</mat-label>
+                                  <input [(ngModel)] = "credentials.username" name="username" type="text" matInput />
+                              </mat-form-field>   
+                              <mat-form-field style="width:300px" >
+                                <mat-label>Enter Password </mat-label>
+                                <input name="password" [(ngModel)] = "credentials.password" type="password" maxlength="30" matInput  />
+                            </mat-form-field>  
+                            <button style="position:relative;text-decoration: none;border:none;outline: none;box-shadow: none;margin-left:70%;margin-top: -25%;font-size: 15px;"  class="btn btn-link" >Forgot?</button>
+                        <p style="font-size: 12px;">By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</p>    
+                   <button [disabled] = "loadButton" type="submit" class="btn" style="background-color: orangered;color: white;width: 90%;margin-top: 10px;">
+                    <div *ngIf="loadButton" class="spinner-border spinner-border-sm text-light" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                    Login</button>
+                    <div *ngIf="InvalidCredentials" style="margin-top: 20px;">
+                    <span style="color: red;font-weight: 500;" >Invalid username and Password</span>
+                </div>
+               
+                </form>
+                    
+                    <div class="row" style="margin-top: 150px;">       
+                    <button class="btn btn-link" style="font-weight: 400;font-size: 14px;text-decoration: none;border:none;outline: none;box-shadow: none;" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#exampleModalRegister" (click)="ResetsendOtp()">New to Flipkart? Create an account</button>    
+                    </div>    
+                        </td> 
+                   
+                       
+                    </table>
+                   
+                  </div>
+                  
+                  
+              
+          </div>
+      
+       
+      
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" style="transform: translate(-2%, 0%);"   id="exampleModalRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" >
+        <button  style="margin-left:118%;transform: translate(5%, 100%);font-size: 25px;font-weight: 500;" type="button" class="btn text-light" data-bs-dismiss="modal" aria-label="Close">X</button>
+      <div class="modal-content centered" style="width:600px">
+      
+            
+        
+          
+              <div class="row">
+                  <div class="col-md-12 " style="height:500px; border-radius: 5px;">
+                    <table>
+                      
+                            <td class="bg-primary"style="width:220px">
+                               <h1 style="color: white;margin-top:50px; margin-left:  30px; ">Looks like you're new here !</h1>
+                               <p style="color: whitesmoke;margin-top:30px; margin-left:  30px;font-size: 16px;">Sign up with our email Id to get started</p>
+                           <img  style="margin:20px;margin-top:100px; width: 200px;height: 150px;" src="/assets/images/login.png" alt="">
+
+                            </td>
+                            <td style="height:500px">
+                               <form action="" style="margin-left: 30px;">
+                              <mat-form-field style="width:300px">
+                                  <mat-label>Enter Email/Mobile number</mat-label>
+                                  <input type="text" matInput  />
+                              </mat-form-field>   
+                              <mat-form-field style="width:300px" *ngIf="showotp" >
+                                <mat-label>Enter OTP send to your emailID </mat-label>
+                                <input type="password" maxlength="30" matInput  />
+                            </mat-form-field>  
+
+                        <p style="font-size: 12px;">By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</p>    
+                   <button class="btn" style="background-color: orangered;color: white;width: 90%;margin-top: 10px;" [disabled]="clicked" (click)="sendOtp(); clicked = true;">Continue</button>
+                    </form>
+                
+                        </td> 
+                   
+                       
+                    </table>
+                   
+                  </div>
+                  
+                  
+              
+          </div>
+      
+       
+      
+
+      </div>
+    </div>
+  </div>
+

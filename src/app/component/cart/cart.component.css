@@ -1,0 +1,36 @@
+.price-border{
+    margin-top: 100px;
+    margin-left: 2px;
+    margin-right: 40px;
+
+}
+
+h4{
+    padding-top: 13px;
+   
+    font-weight: 500;
+}
+
+.price-border-detail{
+    margin-left: 2px;
+    margin-right: 40px;
+}
+
+@media only screen and (max-width: 500px) {
+    .price-border{
+        margin-top: 20px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    .price-border-detail{
+        margin-left: 30px;
+        margin-right: 30px; 
+    }
+
+}
+
+.fa {
+    color: orange;    
+    font-size: 12px;
+}
