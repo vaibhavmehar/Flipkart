@@ -8,8 +8,6 @@ import { ProductComponent } from './component/product/product.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PdetailsComponent } from './component/pdetails/pdetails.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { RegisterComponent } from './component/register/register.component';
-import { RecoverypasswordComponent } from './component/recoverypassword/recoverypassword.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,9 +23,7 @@ import { MatInputModule } from '@angular/material/input';
     CartComponent,
     ProductComponent,
     PdetailsComponent,
-    FooterComponent,
-    RegisterComponent,
-    RecoverypasswordComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
