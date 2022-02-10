@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { OrderComponent } from './component/order/order.component';
 
 
 
@@ -23,7 +24,8 @@ import { MatInputModule } from '@angular/material/input';
     CartComponent,
     ProductComponent,
     PdetailsComponent,
-    FooterComponent
+    FooterComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

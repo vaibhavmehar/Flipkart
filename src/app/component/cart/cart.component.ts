@@ -95,6 +95,9 @@ export class CartComponent implements OnInit {
 
   placeOrder(){
    // console.log(JSON.stringify(this.product));
+   this.product.forEach((element: any) => {
+    Object.assign(element,{grandTotal: this.grandTotal,total: this.offerPrice,ODate:new Date(),Address:'Raigarh'});
+  });
    this.loadButton = true;
    this.cart.placeOrder(this.product, sessionStorage.getItem("Username")).subscribe(
      (response:any) => {

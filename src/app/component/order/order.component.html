@@ -1,0 +1,71 @@
+<div class="container-fluid" style="margin-top:100px">
+    <div class="row justify-content-evenly">
+        <div class="col-md-10">
+         
+              <div *ngFor="let product of Orders;let i=index;" > 
+                <h2 class="accordion-header" id="headingOne">
+                    <button style="padding:5px 10px;font-size:13px;border: 1px solid gray;background-color: none;box-shadow: none;outline: none;font-size:13px;" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#vaibhav'+i" aria-expanded="true" aria-controls="collapseOne1">
+                    
+                          <div style="font-size:13px" class="col">Order No #{{product.OrderId}}</div>
+                          <div class="col" style="text-align: right;padding-right: 30px;">Order Date :{{product.ODate|date:'dd/MM/yyyy'}}</div>
+                   
+                    </button>
+                  </h2>
+               
+                  <div style="margin-top: -20px;font-size:13px" id="{{'vaibhav' + i}}" class="accordion-collapse collapse " aria-labelledby="headingOne1" >
+                    <div class="accordion-body" style="border: 1px solid gray;">
+                      <div class="row">
+                          <div class = "col-md-7">
+                         <span> <strong>Order No : </strong> #{{product.OrderId}}</span><br>
+                         <span> <strong>Order Date : </strong>{{product.ODate|date:'dd/MM/yyyy'}}</span><br>
+                         <span> <strong>Customer Name : </strong> {{product.Username}}</span><br>
+                         <span> <strong>Seller Name : </strong>Jagdish Traders</span>
+                        </div>
+                        <div class = "col">
+                            <strong>Delivery Address :</strong>{{product.Address}}
+                        </div>                      
+                       </div>
+                       <hr>
+                       <div *ngFor="let item of product.data">
+                       <div class="row" style="font-size:13px">
+                        <div class = "col-6">
+                            <strong>Item:</strong> {{item.title}}
+                        </div>
+                        <div class = "col-2">
+                            <strong>Price :</strong><label style="text-align:right;width: 60px">{{item.Oprice| number:'1.2'}}</label>
+                        </div>
+                        <div class = "col-2">
+                            <strong> Discount :</strong> {{item.discount}}%                            
+                        </div>
+                        <div class = "col-2">
+                            <strong>Total :</strong><label style="text-align:right;width: 60px;">{{item.price| number:'1.2'}}</label>                      
+                        </div>
+                       </div>
+                    </div>
+                   <hr>
+                       <div class="row" style="font-size:13px">
+                        <div class = "col-6">
+                           
+                        </div>
+                        <div class = "col-2">
+                            <strong>Price :</strong><label style="text-align:right;width: 60px;"> {{product.grandTotal| number:'1.2'}}</label>
+                        </div>
+                        <div class = "col-2">
+                                                
+                        </div>
+                        <div class = "col-2">
+                            <strong>Total:</strong><label style="text-align:right;width: 60px;"> {{product.total| number:'1.2'}}  </label>                   
+                        </div>
+                       </div> 
+                       <hr>
+                       This is the computer generated invoice.
+                    </div>
+                  </div>
+                  <br>
+                </div>
+                
+          
+        </div>
+       
+    </div>
+</div>
