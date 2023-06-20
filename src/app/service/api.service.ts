@@ -46,6 +46,7 @@ return this.http.get<any>("https://script.google.com/macros/s/AKfycbyO9V3Sc8GSY8
     var data : any = [];
     var row1 : any = {};
     let Username = sessionStorage.getItem("Username");
+    
    //   return this.http.get<any>("https://fakestoreapi.com/products")
    return this.http.get<any>("https://script.google.com/macros/s/AKfycbyO9V3Sc8GSY8Inhjv-u_ON5sffJ0Tr6SL0EEFEDPQ13bIxkR7std1TM_hhtu5ps_Cj/exec?Sheetname=Cart&Username=" + Username )
       .pipe(map((response:any) => {
@@ -74,8 +75,9 @@ return this.http.get<any>("https://script.google.com/macros/s/AKfycbyO9V3Sc8GSY8
 
 getOrderData(){
 let Username = sessionStorage.getItem("Username");
+
  //   return this.http.get<any>("https://fakestoreapi.com/products")
-return this.http.get<any>("https://script.google.com/macros/s/AKfycbyO9V3Sc8GSY8Inhjv-u_ON5sffJ0Tr6SL0EEFEDPQ13bIxkR7std1TM_hhtu5ps_Cj/exec?Sheetname=Cart&Username=" + Username )
+ return this.http.get<any>("https://script.google.com/macros/s/AKfycbyO9V3Sc8GSY8Inhjv-u_ON5sffJ0Tr6SL0EEFEDPQ13bIxkR7std1TM_hhtu5ps_Cj/exec?Sheetname=Cart&Username=" + Username )
     .pipe(map((response:any) => {
       console.log(response);
      return response;

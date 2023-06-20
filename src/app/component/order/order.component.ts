@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SubscriptionLog } from 'rxjs/internal/testing/SubscriptionLog';
 import { first } from 'rxjs/operators';
 import { ApiService } from 'src/app/service/api.service';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-order',
@@ -10,18 +12,24 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class OrderComponent implements OnInit {
 
-  public Orders: any;
-  constructor(private api: ApiService) { }
-   
+  public Orders: any; 
+  public loadSpinner: boolean = true;
+  constructor(private api: ApiService, private login: LoginService, private router: Router) { }
+
 
   ngOnInit(): void {   
-      
-           this.api.getOrderData().subscribe(
+    if(!this.login.isLoggedIn()){
+        this.router.navigate(['./product']);
+    }
+    
+          this.api.getOrderData().subscribe(
             (response:any)=>{
               console.log(response);
               this.Orders = response;
-            }
+              this.loadSpinner = false;
+            }          
           )
+         
       }
   
 

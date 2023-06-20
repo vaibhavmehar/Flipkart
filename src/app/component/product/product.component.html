@@ -32,6 +32,9 @@
 
 <div class="container">
     <div class="row justify-content-evenly">
+        <div *ngIf="loadSpinner" class="cssload-container">
+            <div class="cssload-speeding-wheel"></div>
+        </div>
         <ng-container *ngFor="let item of productList">
         <div class="card col-md-3">
             <img  src="{{item.path+item.ProductId+'.'+item.ext}}" routerLink="/pdetails" (click)="goToComponent(item)" alt="">

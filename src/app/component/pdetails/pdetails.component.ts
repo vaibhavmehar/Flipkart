@@ -73,7 +73,7 @@ export class PdetailsComponent implements OnInit {
     }
   }
   sessionStorage.setItem("BrandList",JSON.stringify(BrandList));
-  location.reload();
+  location.reload();  
   }
 
 

@@ -11,6 +11,7 @@ import { UtilService } from 'src/app/service/util.service';
 })
 export class ProductComponent implements OnInit {
 
+  public loadSpinner: boolean = true;
   public productList: any;
   public CartItem:any = [];
   
@@ -32,9 +33,10 @@ export class ProductComponent implements OnInit {
         this.productList = response;
         this.productList.forEach((element: any) => {
           Object.assign(element,{quantity:1,total: element.price});
+
         });
         sessionStorage.setItem("ProductList",JSON.stringify(this.productList));
-        
+         this.loadSpinner = false;
     })
       
    }

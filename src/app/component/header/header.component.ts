@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/service/cart.service';
 import { FormsModule, SelectMultipleControlValueAccessor } from '@angular/forms';
 import { LoginService } from 'src/app/service/login.service';
-
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
   public username:any = '';
     
   
-  constructor(private cart: CartService,private login: LoginService) { }
+  constructor(private cart: CartService,private login: LoginService,private router: Router) { }
 
   ngOnInit(): void {
     if(sessionStorage.getItem("Username")!=null){
@@ -46,7 +46,8 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     this.username = '';  
-    return this.login.logout();
+    this.login.logout();        
+    this.router.navigate(['./product']);
   }
 
   ResetCredentials(){
