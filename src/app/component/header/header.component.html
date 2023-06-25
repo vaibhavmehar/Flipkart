@@ -28,7 +28,7 @@
                 </button>
           </div>
 
-        <button (click)="ResetCredentials()" *ngIf="!getUsername()" class="btn btn-link text-light login" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</button>
+        <button (click)="ResetCredentials()" *ngIf="!getUsername()" class="btn btn-link text-light login" data-bs-toggle="modal" data-bs-target="#exampleModal_small">Login123</button>
         <button type="button" class=" navbar-toggler navbar-toggler-right navbar-dark btn btn-primary btn-navbar"  data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon " ></span>
         </button>
@@ -178,6 +178,68 @@
                         </td> 
                    
                        
+                    </table>
+                   
+                  </div>
+                  
+                  
+              
+          </div>
+      
+       
+      
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="modal fade" style="transform: translate(-2%, 0%);"   id="exampleModal_small" tabindex="-1" aria-labelledby="exampleModalLabel_small" aria-hidden="true">
+    <div class="modal-dialog" >
+        <button  style="margin-left:93%;transform: translate(5%, 100%);font-size: 25px;font-weight: 500;" type="button" class="btn text-light" data-bs-dismiss="modal" aria-label="Close">X</button>
+      <div class="modal-content centered" style="width:380px;margin-left:50px">
+      
+            
+        
+          
+              <div class="row">
+                  <div class="col-md-8 " style="height:100px; border-radius: 5px;">
+                    <table>
+                      
+                        <td class="bg-primary">
+                           <h3 style="color: white;margin-top:50px; text-align: center; ">Login</h3>
+                           <p style="color: whitesmoke;margin-top:10px; text-align: center;;font-size: 13px;width:400px">Get access to your Orders, Wishlist and Recommendations</p>
+                       <img  style="margin-left:140px;margin-bottom:50px;margin-top:10px; width: 120px;height: 80px;" src="https://raw.githubusercontent.com/vaibhavmehar/Flipkart/master/src/assets/images/login.png" alt="">
+                        <div style="background-color: white;">
+                          <form (ngSubmit)="onSubmit()" style="margin-left: 30px;">
+                         <mat-form-field style="width:300px">
+                             <mat-label>Enter Email/Mobile number</mat-label>
+                             <input [(ngModel)] = "credentials.username" name="username" type="text" matInput />
+                         </mat-form-field>   
+                         <mat-form-field style="width:300px" >
+                           <mat-label>Enter Password </mat-label>
+                           <input name="password" [(ngModel)] = "credentials.password" type="password" maxlength="30" matInput  />
+                       </mat-form-field>  
+                       <button style="position:relative;text-decoration: none;border:none;outline: none;box-shadow: none;margin-left:70%;margin-top: -25%;font-size: 15px;"  class="btn btn-link" >Forgot?</button>
+                   <p style="font-size: 12px;">By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</p>    
+              <button [disabled] = "loadButton" type="submit" class="btn" style="background-color: orangered;color: white;width: 90%;margin-top: 10px;">
+               <div *ngIf="loadButton" class="spinner-border spinner-border-sm text-light" role="status">
+                   <span class="sr-only">Loading...</span>
+                 </div>
+               Login</button>
+               <div *ngIf="InvalidCredentials" style="margin-top: 20px;">
+               <span style="color: red;font-weight: 500;" >Invalid username and Password</span>
+           </div>
+          
+                          </form>
+                          <div class="row" style="margin-top: 10px;padding-bottom: 10px;">       
+                            <button class="btn btn-link" style="font-weight: 400;font-size: 14px;text-decoration: none;border:none;outline: none;box-shadow: none;" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#exampleModalRegister" (click)="ResetsendOtp()">New to Flipkart? Create an account</button>    
+                            </div>  
+                       </div>
+  
+                   </td> 
                     </table>
                    
                   </div>

@@ -44,6 +44,7 @@ export class ProductComponent implements OnInit {
     let productList_temp : any;
      productList_temp = sessionStorage.getItem("ProductList");
      this.productList = JSON.parse(productList_temp);
+     this.loadSpinner = false;
    }
  
    this.cart.addToCart();
